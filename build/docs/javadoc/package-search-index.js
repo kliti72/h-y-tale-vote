@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"com.hytaletop.hytaletopvote"},{"l":"com.hytaletop.hytaletopvote.commands"}];updateSearchResults();

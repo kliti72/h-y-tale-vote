@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html","k":"18"},{"p":"com.hytaletop.hytaletopvote.commands","l":"ClaimCommand"},{"p":"com.hytaletop.hytaletopvote","l":"TinyMsg"},{"p":"com.hytaletop.hytaletopvote","l":"Vote"}];updateSearchResults();
