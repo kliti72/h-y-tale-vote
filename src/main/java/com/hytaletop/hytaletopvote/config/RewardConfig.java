@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RewardConfig {
-
+    private String rewardMessage = "Congratulations Reward Claimed!";
     private final Map<String, Integer> rewardItems;
 
     public RewardConfig() {

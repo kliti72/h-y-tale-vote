@@ -11,12 +11,13 @@ import com.google.gson.GsonBuilder;
 public class ConfigManager {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+
     private RewardConfig config;
 
     private final File configFile;
 
     public ConfigManager() {
-        File folder = new File("mods/h-t-vote");
+        File folder = new File("mods/h-y-tale-vote");
         if (!folder.exists()) {
             folder.mkdirs();
         }
