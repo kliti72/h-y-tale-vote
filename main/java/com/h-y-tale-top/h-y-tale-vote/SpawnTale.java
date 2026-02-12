@@ -42,60 +42,16 @@ public class SpawnTale extends JavaPlugin {
         LOGGER.atInfo().log("Initializable: ", this.getManifest().getName());
     }
 
-
     @Override
     protected void setup() {
-        
         this.configSpawnTale = this.configManager.getConfig(); // create json or read if exist
-
-        
         this.getCommandRegistry().registerCommand(new SpawnCommand(this));
-        this.getCommandRegistry().registerCommand(new SetSpawnCommand(this));
-        this.getCommandRegistry().registerCommand(new MoveCameraCommand());
-        this.getCommandRegistry().registerCommand(new OpenTutorialCommand());
-        this.getCommandRegistry().registerCommand(new OpenMenuCommand());
-        WelcomeNotify welcome = new WelcomeNotify();
-        TeleportSpawnOnJoin teleportSpawnOnJoin = new TeleportSpawnOnJoin(this);
-
-        this.getEventRegistry().registerGlobal(PlayerConnectEvent.class, welcome::onPlayerConnect);
-        this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, welcome::onPlayerReady);
-        this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, teleportSpawnOnJoin::teleportPlayerOnJoin);
-
-
-        // Clear hot bar and set navigator
-        SetupLobbyHotBar lobbyHotBar = new SetupLobbyHotBar(this);
-        this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, lobbyHotBar::setupLobbyHotBar);
-
-
-        CameraPresentation cameraPresentation = new CameraPresentation(this);
-        this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, cameraPresentation::cameraPresentation);
-        this.configManager.save();
-        LOGGER.atInfo().log("Setuped: ", this.getManifest().getName());
-
-        // Client Packet to manage hotbar handle
-        // inboundFilter = PacketAdapters.registerInbound(new AbilitySlotHandler(this));
-        // Replace this for custom iteraction
-        
-        this.getCodecRegistry(Interaction.CODEC).register("shield_menu_interaction", LifeShieldInteraction.class, LifeShieldInteraction.CODEC);
-
-    }
-
-    public void relaodPlugin() {
-        this.configManager.save();
-        this.shutdown();
-        this.setup();
     }
 
     @Override
     protected void shutdown() {
         this.configManager.save();
         LOGGER.atInfo().log("Deactive", this.getManifest().getName());
-
-        // Elimina i filtri in ascolto del packet
-        if (inboundFilter != null) {
-            PacketAdapters.deregisterInbound(inboundFilter);
-        }
-        
     }
 
     public ConfigSpawnTale getConfig() {

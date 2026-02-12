@@ -35,16 +35,18 @@ public class SpawnCommand extends AbstractPlayerCommand  {
 
     public void execute(@Nonnull CommandContext context, @Nonnull Store<EntityStore> store, @Nonnull Ref<EntityStore> ref, @Nonnull PlayerRef playerRef, @Nonnull World world) {
 
-        if (this.getConfig().spawnWorldName == null) {
-            PlayerRef player = Universe.get().getPlayer(context.sender().getUuid());
-            player.sendMessage(TinyMsg.parse("<red> The spawn is not settend. /shieldsetspawn </red>"));
-            return;
-        }        
-    
-        Teleport tp = new Teleport(this.getConfig().getSpawnLocation(), this.getConfig().getHeadRotation());
-        store.addComponent(ref, Teleport.getComponentType(), tp);
+        String apiUrl = "https://jsonplaceholder.typicode.com/users/1";
 
-        playerRef.sendMessage(TinyMsg.parse("<green> Teletrasportato allo spawn! </green>"));
+        HttpClient client = HttpClient.newBuilder()
+                .connectTimeout(Duration.ofSeconds(10))
+                .build();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(apiUrl))
+                .timeout(Duration.ofSeconds(10))
+                .header("Accept", "application/json")
+                .GET()
+                .build();
 
     }
 }
