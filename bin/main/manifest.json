@@ -1,0 +1,9 @@
+{
+    "Group": "hytaletop",
+    "Name": "hytaletopvote",
+    "description": "Checker for validate the vote.",
+    "ServerVersion": "*",
+    "Main": "com.hytaletop.hytaletopvote.Vote",
+    "Version": "0.0.2",
+    "IncludesAssetPack": false
+}

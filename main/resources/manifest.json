@@ -1,9 +1,0 @@
-{
-    "Group": "h-y-tale-top",
-    "Name": "h-y-tale-vote",
-    "description": "Checker for validate the vote.",
-    "ServerVersion": "*",
-    "Main": "com.pvpshield.spawntale.SpawnTale",
-    "Version": "0.0.2",
-    "IncludesAssetPack": false
-}

@@ -1,0 +1,10 @@
+-classpath 'C:\\Users\\kliti\\Desktop\\h-y-tale-vote\\build\\classes\\java\\main;C:\\Users\\kliti\\Desktop\\h-y-tale-vote\\build\\resources\\main;C:\\Users\\kliti\\AppData\\Roaming\\Hytale\\install\\release\\package\\game\\latest\\Server\\HytaleServer.jar'
+-quiet 
+-d 'C:\\Users\\kliti\\Desktop\\h-y-tale-vote\\build\\docs\\javadoc'
+-windowtitle 'hytaletopvote API'
+-doctitle 'hytaletopvote API'
+-notimestamp 
+-Xdoclint:-missing '-quiet'
+'C:\\Users\\kliti\\Desktop\\h-y-tale-vote\\src\\main\\java\\com\\hytaletop\\hytaletopvote\\commands\\ClaimCommand.java'
+'C:\\Users\\kliti\\Desktop\\h-y-tale-vote\\src\\main\\java\\com\\hytaletop\\hytaletopvote\\TinyMsg.java'
+'C:\\Users\\kliti\\Desktop\\h-y-tale-vote\\src\\main\\java\\com\\hytaletop\\hytaletopvote\\Vote.java'

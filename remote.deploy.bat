@@ -4,7 +4,7 @@ setlocal EnableDelayedExpansion
 :: === CONFIGURA QUI ===
 set PLUGIN_DIR=C:\Users\kliti\Desktop\h-y-tale-vote\
 set BUILD_CMD=gradlew build
-set JAR_NAME=h-y-tale-vote.jar
+set JAR_NAME=hytaletopvote.jar
 set BUILD_OUTPUT=%PLUGIN_DIR%\build\libs\%JAR_NAME%
 set SERVER_USER=ubuntu
 set SERVER_IP=57.128.252.159
