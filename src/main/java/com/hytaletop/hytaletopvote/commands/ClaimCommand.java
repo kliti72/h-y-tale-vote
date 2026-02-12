@@ -38,7 +38,7 @@ public class ClaimCommand extends AbstractPlayerCommand  {
         @Nonnull PlayerRef playerRef, 
         @Nonnull World world) {
 
-        String apiUrl = "https://jsonplaceholder.typicode.com/users/1";
+        String apiUrl = "http://localhost:3000/voted/" + playerRef.getUsername();
 
         HttpClient client = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(10))
