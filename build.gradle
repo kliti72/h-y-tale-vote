@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import org.gradle.internal.os.OperatingSystem
+
+ext {
+    hytaleHome = "${System.getProperty("user.home")}/AppData/Roaming/Hytale"
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    withSourcesJar()
+    withJavadocJar()
+}
+
+javadoc {
+    options.addStringOption('Xdoclint:-missing', '-quiet')
+}
+
+dependencies {
+    implementation(files("$hytaleHome/install/release/package/game/latest/Server/HytaleServer.jar"))
+}
+

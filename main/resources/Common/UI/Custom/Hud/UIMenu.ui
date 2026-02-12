@@ -1,0 +1,172 @@
+
+$C = "../Common.ui";
+
+@logoAdventure = PatchStyle(TexturePath: "LogoShieldAdventureResize.png");
+@logoSoul = PatchStyle(TexturePath: "LogoShieldSoulResize.png");
+@logoCoomingSoon = PatchStyle(TexturePath: "LogoShieldCooming.png");
+
+@PrimaryButtonStyle = TextButtonStyle(
+  Default: (Background: #407d00, LabelStyle: (FontSize: 14, TextColor: #c5c5c5, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #025016, LabelStyle: (FontSize: 14, TextColor: #8e8e8e, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #0c2902, LabelStyle: (FontSize: 14, TextColor: #9b9b9b, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+@helpButtonStyle = TextButtonStyle(
+  Default: (Background: #dc0000, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #df2500, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #f60000, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+
+Group {
+    Anchor: (Width: 1200, Height: 800);
+    LayoutMode: Top;
+    Padding: (Full: 20);
+
+    Label #Menutitle {
+        Text: "PVPSHIELD";
+        Anchor: (Height: 50);
+        Style: (FontSize: 36, TextColor: #ff9900, Alignment: Center);
+    }
+
+    Label #Subtitle {
+        Text: "Seleziona la modalità";
+        Anchor: (Height: 30);
+        Style: (FontSize: 24, TextColor: #e5b121, Alignment: Center);
+    }
+
+    Label #Description {
+        Text: "Questo menu ti permette di navigare  tra le modalità di pvpshield.";
+        Anchor: (Height: 25);
+        Style: (FontSize: 12, TextColor: #e4e4e4, Alignment: Center);
+    }
+
+    Group {
+    
+        LayoutMode: Left;
+
+        Group 
+        {
+            Anchor: (Width: 400, Height: 500);
+            LayoutMode: Top;
+            Padding: (Full: 20);
+
+            Group #AdventureContainer {
+                Anchor: (Width: 250, Height: 250);
+                Background: @logoAdventure;
+                LayoutMode: Center;
+            }
+
+            Label #Adventure {
+                Text: "Modalità Adventure.";
+                Anchor: (Height: 20);
+                Style: (FontSize: 22, TextColor: #4dd50d, Alignment: Center, RenderBold: true);
+                Padding: (Full: 20);
+            }
+
+            Label #InfoAdventure {
+                Text: "Originale Hytale";
+                Anchor: (Height: 20);
+                Style: (FontSize: 18, TextColor: #bfbfbf, Alignment: Center);
+            }
+
+            Label #InfoAdventureM {
+                Text: "Gioca alla versione originale di hytale.";
+                Anchor: (Height: 15);
+                Style: (FontSize: 16, TextColor: #bfbfbf, Alignment: Center);
+            }
+
+            Label #InfoAdventureMM {
+                Text: "Online: 20 giocatori.";
+                Anchor: (Height: 30);
+                Style: (FontSize: 16, TextColor: #67d309, Alignment: Center);
+                Padding: (Full: 20);
+            }
+
+            Group { Anchor: (Height: 12); }
+
+            TextButton #JoinAdventure {
+                Text: "Entra";
+                Anchor: (Width: 110, Height: 40);
+                Style: @PrimaryButtonStyle;
+            }
+
+        }
+
+        Group 
+        {
+            Anchor: (Width: 400, Height: 500);
+            LayoutMode: Top;
+            Padding: (Full: 20);
+
+            Group {
+                Anchor: (Width: 250, Height: 250);
+                Background: @logoSoul;
+                LayoutMode: Center;
+            }
+
+            Label #AdventureB {
+                Text: "Cooming soon...";
+                Anchor: (Height: 20);
+                Style: (FontSize: 22, TextColor: #bfbfbf, Alignment: Center, RenderBold: true);
+                Padding: (Full: 20);
+            }
+
+            Label #InfoAdventureB {
+                Text: "In arrivo..";
+                Anchor: (Height: 20);
+                Style: (FontSize: 18, TextColor: #bfbfbf, Alignment: Center);
+            }
+
+            Label #InfoAdventureMB {
+                Text: "Aiutaci su discord.pvpshield.com";
+                Anchor: (Height: 15);
+                Style: (FontSize: 16, TextColor: #bfbfbf, Alignment: Center);
+            }
+
+            Group { Anchor: (Height: 12); }
+
+        }
+
+        Group 
+        {
+            Anchor: (Width: 400, Height: 500);
+            LayoutMode: Top;
+            Padding: (Full: 20);
+
+            Group {
+                Anchor: (Width: 250, Height: 250);
+                Background: @logoCoomingSoon;
+                LayoutMode: Center;
+            }
+
+            Label #AdventureC {
+                Text: "Cooming soon...";
+                Anchor: (Height: 20);
+                Style: (FontSize: 22, TextColor: #bfbfbf, Alignment: Center, RenderBold: true);
+                Padding: (Full: 20);
+            }
+
+            Label #InfoAdventureC {
+                Text: "In arrivo..";
+                Anchor: (Height: 20);
+                Style: (FontSize: 18, TextColor: #bfbfbf, Alignment: Center);
+            }
+
+            Label #InfoAdventureMMC {
+                Text: "Esplorazione di hytale nella sua forma pura.";
+                Anchor: (Height: 20);
+                Style: (FontSize: 16, TextColor: #bfbfbf, Alignment: Center);
+            }
+
+            Group { Anchor: (Height: 12); }
+
+        }
+    }
+
+    Label #EscInfo {
+        Text: "Premi ESC per chiudere il menu.";
+        Anchor: (Top: 720, Height:50);
+        Style: (FontSize: 18, TextColor: #d9d9d9, Alignment: Center);
+    }
+}

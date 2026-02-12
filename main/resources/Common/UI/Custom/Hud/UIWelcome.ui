@@ -1,0 +1,26 @@
+@logo = PatchStyle(TexturePath: "logoGPT.png");
+
+
+Group {
+    LayoutMode: Center;
+    Anchor: (Width: 1000, Height: 1000);
+
+    Group {
+        LayoutMode: Center;
+
+        Label #ServerName {
+            Text: "PVPSHIELD";
+            Anchor: (Height: 100);
+            Style: (FontSize: 140, TextColor: #ff9900, Alignment: Center);
+        }
+
+        Label #Subtitle {
+            Text: "play.pvpshield.it";
+            Anchor: (Height: 100);
+            Style: (FontSize: 80, TextColor: #e5b121, Alignment: Center);
+        }
+
+    }
+
+
+}

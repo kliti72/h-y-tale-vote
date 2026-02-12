@@ -1,0 +1,33 @@
+{
+  "TranslationProperties": {
+    "Name": "PvPShield - Seleziona modalità",
+    "Description": "Questo oggetto ti permette di navigare tra le diverse modalità" 
+  },
+  "Id": "LIFE_SHIELD",
+  "Icon": "Icons/ItemsGenerated/life_shield_icon.png",
+  "Model": "Items/life_shield/model.blockymodel",
+  "Texture": "Items/life_shield/model_texture.png",
+  "Quality": "Rare",
+  "Categories": [
+    "Items.Ingredients"
+  ],
+  "PlayerAnimationsId": "Item",
+  "Scale": 1.5,
+  "Rotation" : 0.5,
+  "Light": {
+    "Color": "#130",
+    "Radius": 5
+  },
+  "ItemSoundSetId": "ISS_Items_Gems",
+  "MaxStack": 100,
+  "DropOnDeath": false,
+  "Interactions": {
+    "Secondary": { 
+      "Interactions": [
+        {
+          "Type": "shield_menu_interaction"
+        }
+      ]
+    }
+  }
+}
