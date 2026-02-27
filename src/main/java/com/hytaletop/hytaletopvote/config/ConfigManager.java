@@ -12,7 +12,7 @@ public class ConfigManager {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-    private RewardConfig config;
+    private Config config;
 
     private final File configFile;
 
@@ -29,16 +29,16 @@ public class ConfigManager {
     private void load() {
         try {
             if (!configFile.exists()) {
-                config = new RewardConfig();
+                config = new Config();
                 save(); 
                 return;
             }
 
-            config = GSON.fromJson(new java.io.FileReader(configFile), RewardConfig.class);
+            config = GSON.fromJson(new java.io.FileReader(configFile), Config.class);
 
         } catch (Exception e) {
             e.printStackTrace();
-            config = new RewardConfig();
+            config = new Config();
         }
     }
 
@@ -50,13 +50,13 @@ public class ConfigManager {
         }
     }
 
-    public RewardConfig getConfig() {
+    public Config getConfig() {
         return config;
     }
 
     public void reload() {
         try (Reader reader = new FileReader(configFile)) {
-            RewardConfig newConfig = GSON.fromJson(reader, RewardConfig.class);
+            Config newConfig = GSON.fromJson(reader, Config.class);
             if (newConfig != null) {
                 this.config = newConfig;
             }

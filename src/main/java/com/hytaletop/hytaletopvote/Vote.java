@@ -8,10 +8,10 @@ import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hytaletop.hytaletopvote.commands.ClaimCommand;
 import com.hytaletop.hytaletopvote.config.ConfigManager;
-import com.hytaletop.hytaletopvote.config.RewardConfig;
+import com.hytaletop.hytaletopvote.config.Config;
 
 public class Vote extends JavaPlugin {
-
+    public static final String BASE_URL = "https://h-y-tale-server.top/api";
     public static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
     ConfigManager configManager = new ConfigManager();
 
@@ -23,15 +23,14 @@ public class Vote extends JavaPlugin {
 
     @Override
     protected void setup() {
-        this.getCommandRegistry().registerCommand(new ClaimCommand(this));
-
+        this.getCommandRegistry().registerCommand(new ClaimCommand(this, this.configManager.getConfig()));
     }
 
     @Override
     protected void shutdown() {
     }
 
-    public RewardConfig getRewardConfig() {
+    public Config getRewardConfig() {
         return this.configManager.getConfig();
     }
 

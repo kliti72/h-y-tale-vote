@@ -5,14 +5,24 @@ import com.hypixel.hytale.server.core.inventory.ItemStack;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RewardConfig {
-    private String rewardMessage = "Congratulations Reward Claimed!";
+public class Config {
+
+    public String secret_key = "303c547d-your-4bd4-key-73588f6f4a59";
+    public boolean is_principal_network = true;
+    public String secondary_id  = "survivol-01-identificator";
+    
+    public boolean enable_key_for_vote_claim_menu = true;
+    public boolean open_menu_on_claim = true;
+    public boolean is_claim_enabled = true;    
+    public boolean disable_claim_message = false;    
+    public String vote_claim_message = "You claimed the reward! Thanks you for vote";
+    public String vote_not_found_message = "You are never voted {server_name}, please vote on {server_link}.";
+    public String vote_time_to_wait_message = "You are alreay vote this server. pls wait {time} for new vote.";
+
     private final Map<String, Integer> rewardItems;
 
-    public RewardConfig() {
+    public Config() {
         this.rewardItems = new HashMap<>();
-                
-        // Add example
         rewardItems.put("example", 1);
     }
 

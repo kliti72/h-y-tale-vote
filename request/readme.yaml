@@ -1,0 +1,10 @@
+http://h-y-tale-server.top:3000/vote/claim/:secretkey//:playerGameName
+return { success: true, message: "Voto ritirato con successo", serverId: server.id };
+
+
+http://localhost:3000/servers/status/ping 
+
+http://localhost:3000/servers/status/ping/secondary
+        secret_key: t.String(),
+        secondary_id: t.String()
+        players_online: t.Number()
