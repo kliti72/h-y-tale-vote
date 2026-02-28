@@ -1,15 +1,7 @@
 package com.hytaletop.hytaletopvote.commands;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.time.Duration;
-
 import javax.annotation.Nonnull;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
@@ -44,16 +36,18 @@ public class ClaimCommand extends AbstractPlayerCommand {
         if (!config.is_claim_enabled)
             return;
 
-        String playerGameName = playerRef.getUsername();
+        String playerGameName = playerRef.getUsername().toLowerCase();
 
         try {
             ClaimResponse res = ClaimResponse.fetch(plugin, config, playerGameName);
 
             String message = switch (res.status) {
+                case ClaimResponse.SECRET_ERROR -> config.error_secret_not_valid_message;
                 case ClaimResponse.NEVER_VOTED -> config.vote_not_found_message
-                        .replace("{server_name}", "#" + res.serverName)
-                        .replace("{server_link}", "h-y-tale-server.top/" + res.serverId)
-                        .replace("{total_votes}", "" + res.voti_totali);
+                        .replace("{server_name}", "" + res.serverName)
+                        .replace("{server_link}", "https://h-y-tale-server.top/server/" + res.serverId)
+                        .replace("{total_votes}", "" + res.voti_totali)
+                        .replace("{player_name}", "" + playerGameName);
 
                 case ClaimResponse.WAIT -> config.vote_time_to_wait_message
                         .replace("{time}", TimeUtils.formatTime(res.timeToWait));

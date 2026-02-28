@@ -14,9 +14,10 @@ import com.hytaletop.hytaletopvote.config.Config;
 public class ClaimResponse {
 
     // ── Costanti status ───────────────────────────────────────────────────────
+    public static final int SECRET_ERROR = -1;
     public static final int NEVER_VOTED  = 0;
     public static final int WAIT         = 1;
-    public static final int SUCCESS      = 3;
+    public static final int SUCCESS      = 2;
 
     // ── Campi response ────────────────────────────────────────────────────────
     public final boolean success;
@@ -25,7 +26,7 @@ public class ClaimResponse {
     public final int     timeToWait; // minuti, presente solo su status 1
     public final String     serverName; // minuti, presente solo su status 1
     public final int     voti_totali; // minuti, presente solo su status 1
-
+    
     // ── Costruttore privato — si usa solo ClaimResponse.fetch() ──────────────
     private ClaimResponse(boolean success, int status, int serverId, int timeToWait, String serverName, int voti_totali) {
         this.success    = success;
@@ -39,7 +40,8 @@ public class ClaimResponse {
     // ── Metodo principale — chiama l'API e ritorna ClaimResponse ─────────────
     public static ClaimResponse fetch(Vote plugin, Config config, String playerGameName) throws Exception {
         String url = "%s/vote/claim/%s/%s".formatted(Vote.BASE_URL, config.secret_key, playerGameName);
-
+        plugin.getLogger().atInfo().log("E' stato mandato la richiesta:" + url);
+        
         HttpClient client = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(10))
                 .build();
