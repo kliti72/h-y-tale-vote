@@ -50,7 +50,8 @@ public class ClaimCommand extends AbstractPlayerCommand {
                         .replace("{player_name}", "" + playerGameName);
 
                 case ClaimResponse.WAIT -> config.vote_time_to_wait_message
-                        .replace("{time}", TimeUtils.formatTime(res.timeToWait));
+                        .replace("{time}", TimeUtils.formatTime(res.timeToWait))
+                        .replace("{player_name}", "" + playerGameName);
 
                 case ClaimResponse.SUCCESS -> config.disable_claim_message
                         ? null

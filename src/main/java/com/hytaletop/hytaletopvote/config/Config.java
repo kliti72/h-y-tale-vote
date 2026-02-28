@@ -9,7 +9,7 @@ public class Config {
 
     public String secret_key = "303c547d-your-4bd4-key-73588f6f4a59";
     public boolean is_principal_network = true;
-    public String secondary_id  = "survivol-01-identificator";
+    public String secondary_id  = "";
     public String error_secret_not_valid_message  = "The secret key is not valid";
     
     public boolean enable_key_for_vote_claim_menu = true;

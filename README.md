@@ -34,6 +34,7 @@ Tutti i comportamenti del comando dipendono dalla `Config`. Ecco i campi rilevan
 ### `vote_time_to_wait_message`
 ```
 {time}   → tempo formattato rimanente prima di poter rivotare (es. "2h 30m")
+{player_name}   →  username del player (lowercase)
 ```
 
 ---
