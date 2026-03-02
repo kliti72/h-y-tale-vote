@@ -33,7 +33,7 @@ public class StatusPingResponse {
         plugin.getLogger().atInfo().log("[PING] Mandando status ping: " + url);
 
         JsonObject bodyJson = new JsonObject();
-        bodyJson.addProperty("secret_key",     config.secret_key);
+        bodyJson.addProperty("secret_key",     config.secretKey);
         bodyJson.addProperty("players_online", playersOnline);
         bodyJson.addProperty("players_max",    playersMax);
         bodyJson.addProperty("is_online",      isOnline);

@@ -8,6 +8,8 @@ import com.hypixel.hytale.server.core.event.events.player.PlayerReadyEvent;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hytaletop.hytaletopvote.commands.ClaimCommand;
+import com.hytaletop.hytaletopvote.commands.ClaimTest;
+import com.hytaletop.hytaletopvote.commands.RewardCommand;
 import com.hytaletop.hytaletopvote.config.ConfigManager;
 import com.hytaletop.hytaletopvote.core.RegisterStatusService;
 import com.hytaletop.hytaletopvote.listener.PlayerCountListener;
@@ -35,6 +37,8 @@ public class Vote extends JavaPlugin {
         this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, playerCounter::onPlayerReady);
         this.getEventRegistry().registerGlobal(PlayerDisconnectEvent.class, playerCounter::onPlayerLeave);
         this.getCommandRegistry().registerCommand(new ClaimCommand(this, this.configManager.getConfig()));
+        this.getCommandRegistry().registerCommand(new RewardCommand(this, this.configManager.getConfig(), this.configManager));
+        this.getCommandRegistry().registerCommand(new ClaimTest(this, this.configManager.getConfig()));
     }
 
     @Override
@@ -44,8 +48,8 @@ public class Vote extends JavaPlugin {
 
     public Config getRewardConfig() {
         
-        if(this.configManager.getConfig().secondary_id.equals("")) {
-            this.configManager.getConfig().secondary_id = CodeUtils.genUniqueCode(); 
+        if(this.configManager.getConfig().secondaryId.equals("")) {
+            this.configManager.getConfig().secondaryId = CodeUtils.genUniqueCode(); 
         }
 
         return this.configManager.getConfig();

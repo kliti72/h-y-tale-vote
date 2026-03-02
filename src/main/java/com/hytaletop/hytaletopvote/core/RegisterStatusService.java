@@ -22,7 +22,7 @@ public class RegisterStatusService {
     }
 
    public void registerAll() {
-        if (config.is_principal_network) {
+        if (config.isPrincipalNetwork) {
             registerPrimaryPing();
         } else {
             registerSecondaryPing();
@@ -53,7 +53,7 @@ public class RegisterStatusService {
             try {
                 StatusPingSecondaryResponse res = StatusPingSecondaryResponse.fetch(
                     plugin, config,
-                    config.secondary_id,
+                    config.secondaryId,
                     StatusUtils.getPlayersOnline()
                 );
                 Vote.LOGGER.atInfo().log("[PING-SECONDARY] Status: " + res.status + " | success: " + res.success);

@@ -23,23 +23,20 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hytaletop.hytaletopvote.TinyMsg;
 import com.hytaletop.hytaletopvote.Vote;
 import com.hytaletop.hytaletopvote.config.Config;
-import com.hytaletop.hytaletopvote.model.ClaimResponse;
 import com.hytaletop.hytaletopvote.utils.ResolvePlayerUtils;
-import com.hytaletop.hytaletopvote.utils.TimeUtils;;
 
 @SuppressWarnings("null")
-public class ClaimCommand extends AbstractPlayerCommand {
+public class ClaimTest extends AbstractPlayerCommand {
 
     Vote plugin;
     Config config;
 
-    public ClaimCommand(Vote plugin, Config config) {
-        super("claim", "claim reward.");
+    public ClaimTest(Vote plugin, Config config) {
+        super("claimtest", "claim reward.");
         this.plugin = plugin;
         this.config = config;
 
-        requirePermission("hyvote.claim");
-        addAliases("vote", "v", "votes", "rewaord", "link");
+        requirePermission("hyvote.claim.test");
     }
 
     public void execute(
@@ -48,44 +45,15 @@ public class ClaimCommand extends AbstractPlayerCommand {
             @Nonnull PlayerRef playerRef,
             @Nonnull World world) {
 
-        if (!config.isClaimEnabled)
-            return;
+        giveReward(context, store, ref, playerRef, world);
 
-        String playerGameName = playerRef.getUsername().toLowerCase();
-
-        try {
-            ClaimResponse res = ClaimResponse.fetch(plugin, config, playerGameName);
-
-            String message = switch (res.status) {
-                case ClaimResponse.SECRET_ERROR -> config.errorSecretNotValidMessage;
-                case ClaimResponse.NEVER_VOTED -> config.voteNotFoundMessage
-                        .replace("{server_name}", "" + res.serverName)
-                        .replace("{server_link}", "https://h-y-tale-server.top/server/" + res.serverId)
-                        .replace("{total_votes}", "" + res.voti_totali)
-                        .replace("{player_name}", "" + playerGameName);
-
-                case ClaimResponse.WAIT -> config.voteTimeToWaitMessage
-                        .replace("{time}", TimeUtils.formatTime(res.timeToWait))
-                        .replace("{player_name}", "" + playerGameName);
-
-                case ClaimResponse.SUCCESS -> {
-                    giveReward(context, store, ref, playerRef, world);
-                    yield config.voteClaimMessage;
-                }
-
-                default -> null;
-            };
-
-            if (message != null)
-                playerRef.sendMessage(TinyMsg.parse(message));
-
-        } catch (Exception e) {
-            plugin.getLogger().atInfo().log("[CLAIM] Errore API: " + e.getMessage());
-        }
     }
 
-    public void giveReward(@Nonnull CommandContext context, @Nonnull Store<EntityStore> store, @Nonnull Ref<EntityStore> ref, @Nonnull PlayerRef playerRef, @Nonnull World world) {
-
+    public void giveReward(
+            @Nonnull CommandContext context, @Nonnull Store<EntityStore> store,
+            @Nonnull Ref<EntityStore> ref,
+            @Nonnull PlayerRef playerRef,
+            @Nonnull World world) {
         Player player = ResolvePlayerUtils.getPlayer(ref, store);
 
         SimpleItemContainer rewardContainer = new SimpleItemContainer((short) 27);

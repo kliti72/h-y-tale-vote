@@ -33,7 +33,7 @@ public class StatusPingSecondaryResponse {
         plugin.getLogger().atInfo().log("[PING-SECONDARY] Mandando status ping secondario: " + url);
 
         JsonObject bodyJson = new JsonObject();
-        bodyJson.addProperty("secret_key",      config.secret_key);
+        bodyJson.addProperty("secret_key",      config.secretKey);
         bodyJson.addProperty("secondary_id",    secondaryId);
         bodyJson.addProperty("players_online",  playersOnline);
 

@@ -39,7 +39,7 @@ public class ClaimResponse {
 
     // ── Metodo principale — chiama l'API e ritorna ClaimResponse ─────────────
     public static ClaimResponse fetch(Vote plugin, Config config, String playerGameName) throws Exception {
-        String url = "%s/vote/claim/%s/%s".formatted(Vote.BASE_URL, config.secret_key, playerGameName);
+        String url = "%s/vote/claim/%s/%s".formatted(Vote.BASE_URL, config.secretKey, playerGameName);
         plugin.getLogger().atInfo().log("E' stato mandato la richiesta:" + url);
         
         HttpClient client = HttpClient.newBuilder()
