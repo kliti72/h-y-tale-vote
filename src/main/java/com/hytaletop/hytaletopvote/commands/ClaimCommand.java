@@ -38,7 +38,6 @@ public class ClaimCommand extends AbstractPlayerCommand {
         this.plugin = plugin;
         this.config = config;
 
-        requirePermission("hyvote.claim");
         addAliases("vote", "v", "votes", "rewaord", "link");
     }
 
@@ -84,7 +83,8 @@ public class ClaimCommand extends AbstractPlayerCommand {
         }
     }
 
-    public void giveReward(@Nonnull CommandContext context, @Nonnull Store<EntityStore> store, @Nonnull Ref<EntityStore> ref, @Nonnull PlayerRef playerRef, @Nonnull World world) {
+    public void giveReward(@Nonnull CommandContext context, @Nonnull Store<EntityStore> store,
+            @Nonnull Ref<EntityStore> ref, @Nonnull PlayerRef playerRef, @Nonnull World world) {
 
         Player player = ResolvePlayerUtils.getPlayer(ref, store);
 
@@ -102,15 +102,24 @@ public class ClaimCommand extends AbstractPlayerCommand {
 
             ContainerWindow rewardWindow = new ContainerWindow(rewardContainer);
 
-            rewardWindow.registerCloseEvent(event -> {
+            // Claim Menu
+            if (config.openMenuOnClaim) {
+                rewardWindow.registerCloseEvent(event -> {
+                    rewardContainer.forEach((slot, item) -> {
+                        if (item != null) {
+                            player.giveItem(item, ref, store);
+                        }
+                    });
+                });
+
+                player.getPageManager().setPageWithWindows(ref, store, Page.Inventory, true, rewardWindow);
+            } else {
                 rewardContainer.forEach((slot, item) -> {
                     if (item != null) {
                         player.giveItem(item, ref, store);
                     }
                 });
-            });
-
-            player.getPageManager().setPageWithWindows(ref, store, Page.Inventory, true, rewardWindow);
+            }
 
         } else {
             playerRef.sendMessage(TinyMsg.parse(config.fullInventory));
